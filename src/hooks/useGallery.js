@@ -19,14 +19,17 @@ function createTabId() {
 }
 
 function toSerializableTabs(tabs) {
-  return tabs.slice(0, MAX_HISTORY_TABS).map((tab) => ({
-    id: tab.id,
-    name: tab.name,
-    status: tab.status === 'history' ? 'history' : 'ready',
-    totalFiles: tab.totalFiles,
-    totalImages: tab.totalImages,
-    updatedAt: tab.updatedAt,
-  }));
+  return tabs
+    .filter((tab) => typeof tab?.id === 'string')
+    .slice(0, MAX_HISTORY_TABS)
+    .map((tab) => ({
+      id: tab.id,
+      name: tab.name,
+      status: tab.status === 'history' ? 'history' : 'ready',
+      totalFiles: tab.totalFiles,
+      totalImages: tab.totalImages,
+      updatedAt: tab.updatedAt,
+    }));
 }
 
 function restoreTabsFromSession() {
@@ -67,12 +70,16 @@ function restoreTabsFromSession() {
 }
 
 function persistTabsToSession(tabs, activeTabId) {
-  const payload = {
-    activeTabId,
-    tabs: toSerializableTabs(tabs),
-  };
+  try {
+    const payload = {
+      activeTabId: typeof activeTabId === 'string' ? activeTabId : null,
+      tabs: toSerializableTabs(tabs),
+    };
 
-  sessionStorage.setItem(SESSION_HISTORY_KEY, JSON.stringify(payload));
+    sessionStorage.setItem(SESSION_HISTORY_KEY, JSON.stringify(payload));
+  } catch (error) {
+    console.error('Falha ao persistir abas no sessionStorage', error);
+  }
 }
 
 function createLoadingTab({ id, name }) {
@@ -115,7 +122,7 @@ export function useGallery() {
   const currentImage = isViewerOpen ? activeImages[activeIndex] : null;
 
   const processFileListForTab = useCallback(async ({ tabId, fileList }) => {
-    if (!fileList || fileList.length === 0) {
+    if (!fileList || fileList.length === 0 || typeof tabId !== 'string') {
       return;
     }
 
@@ -223,7 +230,7 @@ export function useGallery() {
   }, [processFileListForTab]);
 
   const reconnectHistoryTab = useCallback(async (tabId, fileList) => {
-    if (!tabId) {
+    if (typeof tabId !== 'string') {
       return;
     }
 
@@ -231,11 +238,19 @@ export function useGallery() {
   }, [processFileListForTab]);
 
   const switchTab = useCallback((tabId) => {
+    if (typeof tabId !== 'string') {
+      return;
+    }
+
     setActiveTabId(tabId);
     setActiveIndex(-1);
   }, []);
 
   const closeTab = useCallback((tabId) => {
+    if (typeof tabId !== 'string') {
+      return;
+    }
+
     tabLoadTokenRef.current.delete(tabId);
 
     setTabs((previousTabs) => {

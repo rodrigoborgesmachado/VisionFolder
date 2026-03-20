@@ -41,7 +41,7 @@ function TabBar({
     const targetTabId = pendingTabIdRef.current;
     pendingTabIdRef.current = null;
 
-    if (targetTabId) {
+    if (typeof targetTabId === 'string') {
       onReconnectTab(targetTabId, selectedFiles);
     } else {
       onAddFolder(selectedFiles);
@@ -92,7 +92,7 @@ function TabBar({
         <button
           type="button"
           className="vf-tab vf-tab--add"
-          onClick={openFolderPicker}
+          onClick={() => openFolderPicker()}
           aria-label={UI_MESSAGES.addFolder}
           title={UI_MESSAGES.addFolder}
         >
