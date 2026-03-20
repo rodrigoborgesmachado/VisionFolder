@@ -1,0 +1,127 @@
+.vf-tabbar {
+  display: block;
+  padding: 0.5rem 0.55rem 0;
+  border-radius: 12px 12px 0 0;
+  border: 1px solid rgba(15, 37, 74, 0.16);
+  border-bottom: none;
+  background: linear-gradient(180deg, #edf3ff 0%, #e4ecfb 100%);
+  box-shadow:
+    inset 0 -1px 0 rgba(255, 255, 255, 0.8),
+    0 8px 24px rgba(15, 37, 74, 0.1);
+}
+
+.vf-tabbar__scroll {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.38rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.15rem;
+  scrollbar-width: thin;
+}
+
+.vf-tabbar__scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.vf-tabbar__scroll::-webkit-scrollbar-thumb {
+  background: rgba(15, 37, 74, 0.22);
+  border-radius: 999px;
+}
+
+.vf-tabbar__input {
+  display: none;
+}
+
+.vf-tab {
+  flex: 0 0 auto;
+  min-width: 170px;
+  max-width: 295px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid rgba(15, 37, 74, 0.14);
+  border-bottom: none;
+  background: linear-gradient(180deg, #ffffff 0%, #f2f6ff 100%);
+  color: #1b345e;
+  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vf-tab:hover {
+  filter: brightness(1.01);
+}
+
+.vf-tab.is-active {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+  color: #102a52;
+  border-color: rgba(20, 85, 255, 0.42);
+  box-shadow: 0 4px 16px rgba(20, 85, 255, 0.12);
+}
+
+.vf-tab__select {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  padding: 0.45rem 0.5rem 0.45rem 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.vf-tab__name {
+  flex: 1;
+  min-width: 0;
+  color: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vf-tab__meta {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 0.1rem 0.42rem;
+  background: rgba(20, 85, 255, 0.13);
+  font-size: 0.68rem;
+  color: #2252a8;
+  text-transform: lowercase;
+}
+
+.vf-tab__close {
+  border: none;
+  background: transparent;
+  color: inherit;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  margin-right: 0.28rem;
+  cursor: pointer;
+}
+
+.vf-tab__close:hover {
+  background: rgba(15, 37, 74, 0.08);
+}
+
+.vf-tab--add {
+  min-width: 38px;
+  width: 38px;
+  justify-content: center;
+  cursor: pointer;
+  color: #1a3f85;
+  background: linear-gradient(180deg, #f6f9ff 0%, #ecf2ff 100%);
+}
+
+.vf-tab--add:hover {
+  filter: brightness(0.98);
+}

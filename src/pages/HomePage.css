@@ -1,0 +1,35 @@
+.vf-home-page {
+  min-height: 100vh;
+  padding: 1.4rem;
+}
+
+.vf-home-page__shell {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.vf-home-page__meta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--color-muted);
+}
+
+.vf-home-page__meta strong {
+  font-size: 1.45rem;
+  color: var(--color-title);
+}
+
+.vf-home-page__workspace {
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+  padding: 1rem;
+  min-height: 240px;
+  display: grid;
+  gap: 1rem;
+  box-shadow: var(--shadow-soft);
+}

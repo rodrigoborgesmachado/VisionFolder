@@ -1,0 +1,125 @@
+.vf-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(10, 15, 24, 0.85);
+  backdrop-filter: blur(5px);
+}
+
+.vf-modal__content {
+  position: relative;
+  width: min(1080px, 100%);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.vf-modal__figure {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #101725;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.4);
+}
+
+.vf-modal__image-wrap {
+  position: relative;
+  min-height: 45vh;
+}
+
+.vf-modal__figure img {
+  display: block;
+  width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+}
+
+.vf-modal__figure img.is-hidden {
+  opacity: 0;
+}
+
+.vf-modal__figure figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  color: #e7eefb;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.vf-modal__figure span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vf-modal__nav,
+.vf-modal__close {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(16, 23, 37, 0.92);
+  color: #f6f9ff;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.vf-modal__close {
+  position: absolute;
+  top: -0.2rem;
+  right: -0.2rem;
+}
+
+.vf-modal__nav:hover,
+.vf-modal__close:hover {
+  transform: scale(1.06);
+}
+
+.vf-modal__nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+@media (max-width: 760px) {
+  .vf-modal__content {
+    grid-template-columns: 1fr;
+  }
+
+  .vf-modal__nav {
+    position: absolute;
+    top: calc(50% - 22px);
+    z-index: 2;
+  }
+
+  .vf-modal__nav--left {
+    left: 0.2rem;
+  }
+
+  .vf-modal__nav--right {
+    right: 0.2rem;
+  }
+}
+
+.vf-modal__loading {
+  position: absolute;
+  inset: 0;
+  min-height: 45vh;
+  display: grid;
+  place-items: center;
+  color: #e7eefb;
+  background: rgba(16, 23, 37, 0.9);
+}
+
+.vf-modal__loading--error {
+  color: #ffd3d3;
+}

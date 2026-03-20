@@ -1,0 +1,19 @@
+.vf-empty-state {
+  margin-top: 1rem;
+  text-align: center;
+  border-radius: 16px;
+  border: 1px dashed var(--border-color);
+  padding: 2rem 1.2rem;
+  color: var(--color-muted);
+  background: var(--surface-soft);
+}
+
+.vf-empty-state h2 {
+  margin: 0.75rem 0 0.5rem;
+  color: var(--color-title);
+  font-size: 1.2rem;
+}
+
+.vf-empty-state p {
+  margin: 0;
+}

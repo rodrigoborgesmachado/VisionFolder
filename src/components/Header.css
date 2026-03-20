@@ -1,0 +1,17 @@
+.vf-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.vf-header h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.1;
+}
+
+.vf-header p {
+  margin: 0.75rem auto 0;
+  max-width: 720px;
+  color: var(--color-muted);
+  font-size: clamp(0.95rem, 1.7vw, 1.05rem);
+}

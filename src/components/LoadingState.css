@@ -1,0 +1,30 @@
+.vf-loading-state {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--color-muted);
+  background: var(--surface-soft);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+}
+
+.vf-loading-state p {
+  margin: 0;
+}
+
+.vf-loading-state__spinner {
+  width: 15px;
+  height: 15px;
+  border-radius: 999px;
+  border: 2px solid #bbccf8;
+  border-top-color: var(--color-primary);
+  animation: vf-spin 0.9s linear infinite;
+}
+
+@keyframes vf-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
